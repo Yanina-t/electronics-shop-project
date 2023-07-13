@@ -10,6 +10,15 @@ def test_initial_value():
     item1 = Item.all[0]
     assert item1.name == "Test_1"
 
+
+def test__repr__():
+    item1 = Item("Смартфон", 10000, 20)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+
+def test__str__():
+    item1 = Item("Смартфон", 10000, 20)
+    assert str(item1) == 'Смартфон'
+
 def test_calculate_total_price():
     price = 20
     quantity = 30
