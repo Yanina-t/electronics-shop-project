@@ -64,9 +64,9 @@ class Item:
             for row in reader:
                 try:
                     cls(
-                        row['name'],
-                        row['price'],
-                        row['quantity']
+                        (row['name']),
+                        cls.string_to_number(row['price']),
+                        cls.string_to_number(row['quantity'])
                     )
                 except FileNotFoundError:
                     print("Ошибка, значение не найдено")
