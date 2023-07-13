@@ -5,6 +5,8 @@ class Item:
     """
     Класс для представления товара в магазине.
     """
+    ROOT_PATH = Path(__file__).parent
+    OPERATION_PATH = Path.joinpath(ROOT_PATH, 'items.csv')
     pay_rate = 1.0
     all = []
 
@@ -29,12 +31,11 @@ class Item:
         """
         return self.price * self.quantity
 
-    def apply_discount(self) -> float:
+    def apply_discount(self):
         """
         Применяет установленную скидку для конкретного товара.
         """
         self.price = self.price * self.pay_rate
-        return self.price
 
     @property
     def name(self):
@@ -53,22 +54,12 @@ class Item:
         self.__name = name[:10]
 
     @classmethod
-    def open_csv(cls):
-        """
-        Путь файла items.csv для открытия
-        """
-        ROOT_PATH = Path(__file__).parent
-        OPERATION_PATH = Path.joinpath(ROOT_PATH, 'items.csv')
-        return OPERATION_PATH
-
-    @classmethod
     def instantiate_from_csv(cls):
         """
         инициализация экземпляров класса Item данными из файла src/items.csv
         """
         cls.all = []
-        file_cls = cls.open_csv()
-        with open(file_cls) as csvfile:
+        with open(cls.OPERATION_PATH) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 try:
@@ -87,9 +78,4 @@ class Item:
         :param num_str: Строчное число
         :return: Int число
         """
-        if "." in num_str:
-            str_to_float: float = float(num_str)
-            str_to_int: int = int(str_to_float)
-        else:
-            str_to_int: int = int(num_str)
-        return str_to_int
+        return int(float(num_str))
