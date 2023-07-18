@@ -1,6 +1,7 @@
 import csv
 from pathlib import Path
 
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -89,3 +90,11 @@ class Item:
         :return: Int число
         """
         return int(float(num_str))
+
+    def __add__(self, other):
+        """
+        Сложение экземпляров класса Phone и Item (сложение по количеству товара в магазине)
+        """
+        if isinstance(self.quantity, Item) or (other.quantity, Item) is False:
+            return 'Экземпляр не Phone или Item классов'
+        return self.quantity + other.quantity

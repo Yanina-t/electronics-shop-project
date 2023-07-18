@@ -1,6 +1,7 @@
 # """Здесь надо написать тесты с использованием pytest для модуля item."""
 from pathlib import Path, WindowsPath
 from src.item import Item
+from src.phone import Phone
 
 def test_initial_value():
     obj_1 = Item("Test_1", 20.5, 100)
@@ -53,3 +54,9 @@ def test_string_to_number():
 def test_instantiate_from_csv():
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
+
+def test__add__():
+    item1 = Item("Смартфон", 10000, 20)
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    assert item1 + phone1 == 25
+    assert phone1 + phone1 == 10
