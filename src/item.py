@@ -2,6 +2,7 @@ import csv
 from pathlib import Path
 
 
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -22,6 +23,7 @@ class Item:
         self.price = price
         self.quantity = quantity
         self.all.append(self)
+
 
     def __repr__(self):
         """
