@@ -2,7 +2,6 @@ import csv
 from pathlib import Path
 
 
-
 class Item:
     """
     Класс для представления товара в магазине.
@@ -23,7 +22,6 @@ class Item:
         self.price = price
         self.quantity = quantity
         self.all.append(self)
-
 
     def __repr__(self):
         """
@@ -72,7 +70,7 @@ class Item:
         инициализация экземпляров класса Item данными из файла src/items.csv
         """
         cls.all = []
-        with open(cls.OPERATION_PATH) as csvfile:
+        with open(cls.OPERATION_PATH, encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 try:

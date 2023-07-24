@@ -1,3 +1,5 @@
+import pytest
+
 from src.phone import Phone
 
 def test_initial_value():
@@ -12,8 +14,8 @@ def test__repr__():
     assert repr(phone1) == "Phone('Смартфон', 10000, 20, 12)"
 
 def test_number_of_sim():
-    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    phone1 = Phone("iPhone 14", 120000, 5, 2)
     assert phone1.number_of_sim == 2
-    phone1 = Phone("iPhone 14", 120_000, 5, 0)
-    # phone1.number_of_sim = 0
+    with pytest.raises(ValueError):
+        Phone("iPhone 14", 120000, 5, 0)
     assert 'Количество физических SIM-карт должно быть целым числом больше нуля.'

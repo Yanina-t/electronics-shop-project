@@ -1,8 +1,13 @@
 from src.item import Item
 
+
 class Phone(Item):
     def __init__(self, name: str, price: float, quantity: int, num_sim: int):
         super().__init__(name, price, quantity)
+        if num_sim > 0 and isinstance(num_sim, int):
+            self.__num_sim = num_sim
+        else:
+            raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')
         self.__num_sim = num_sim
 
     def __repr__(self):
@@ -24,8 +29,7 @@ class Phone(Item):
         """
         Количество физических SIM-карт должно быть целым числом больше нуля.
         """
-        if num_sim > 0 and num_sim is int:
-            try:
-                True
-            except ValueError:
-                print('Количество физических SIM-карт должно быть целым числом больше нуля.')
+        if num_sim > 0 and isinstance(num_sim, int):
+            self.__num_sim = num_sim
+        else:
+            raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')
