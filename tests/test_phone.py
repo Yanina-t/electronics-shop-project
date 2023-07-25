@@ -18,4 +18,3 @@ def test_number_of_sim():
     assert phone1.number_of_sim == 2
     with pytest.raises(ValueError):
         Phone("iPhone 14", 120000, 5, 0)
-    assert 'Количество физических SIM-карт должно быть целым числом больше нуля.'

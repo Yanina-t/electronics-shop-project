@@ -8,7 +8,7 @@ class Phone(Item):
             self.__num_sim = num_sim
         else:
             raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')
-        self.__num_sim = num_sim
+
 
     def __repr__(self):
         """
